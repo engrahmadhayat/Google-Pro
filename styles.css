@@ -1,0 +1,338 @@
+:root {
+    --bg-dark: #202124;
+    /* Google Dark Mode Color */
+    --bg-panel: #303134;
+    --bg-panel-hover: #3c4043;
+    --text-primary: #e8eaed;
+    --text-secondary: #9aa0a6;
+    --accent-yellow: #fcd535;
+    --accent-green: #34a853;
+    --accent-red: #ea4335;
+    --accent-blue: #8ab4f8;
+    --border-color: #5f6368;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Topbar */
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    height: 70px;
+}
+
+.topbar-left {
+    display: flex;
+    gap: 20px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.status.healthy {
+    color: var(--accent-green);
+}
+
+.status.sandbox {
+    color: var(--accent-blue);
+}
+
+.topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.lang-selector select {
+    background-color: transparent;
+    color: var(--text-primary);
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    outline: none;
+}
+
+.lang-selector select option {
+    background-color: var(--bg-panel);
+}
+
+.nav-btn {
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+}
+
+.nav-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.profile-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.profile-pic {
+    width: 36px;
+    height: 36px;
+    background-color: var(--accent-yellow);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #000;
+    font-size: 14px;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-info .name {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.profile-info .role {
+    font-size: 11px;
+    color: var(--accent-yellow);
+}
+
+/* Main Search Layout */
+.clean-search-layout {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 12vh;
+}
+
+.main-title {
+    font-size: 80px;
+    font-weight: 500;
+    color: var(--text-primary);
+    letter-spacing: -2px;
+    margin-bottom: 5px;
+}
+
+.main-title .gp-badge {
+    color: var(--accent-yellow);
+    font-weight: 700;
+}
+
+.signature-line {
+    color: var(--text-secondary);
+    font-size: 15px;
+    margin-bottom: 40px;
+    letter-spacing: 0.5px;
+}
+
+/* Search Box Area */
+.search-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.search-box {
+    width: 90%;
+    max-width: 650px;
+    display: flex;
+    background-color: var(--bg-panel);
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    height: 52px;
+    overflow: hidden;
+    transition: background-color 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+.search-box:hover,
+.search-box:focus-within {
+    background-color: var(--bg-panel-hover);
+    border-color: transparent;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+}
+
+.search-icon {
+    padding: 0 15px 0 20px;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+}
+
+.search-box input {
+    flex: 1;
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: 16px;
+    outline: none;
+}
+
+.mic-btn {
+    background: none;
+    border: none;
+    padding: 0 20px;
+    color: var(--accent-blue);
+    cursor: pointer;
+    transition: 0.2s;
+    font-size: 18px;
+}
+
+.mic-btn:hover {
+    transform: scale(1.1);
+}
+
+.mic-btn.recording {
+    color: var(--accent-red);
+    animation: pulse 1.2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.3);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Buttons */
+.search-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.btn-primary,
+.btn-secondary {
+    background-color: var(--bg-panel);
+    border: 1px solid var(--bg-panel);
+    color: var(--text-primary);
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.2s;
+    font-weight: 500;
+}
+
+.btn-primary:hover,
+.btn-secondary:hover {
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+/* Results Area */
+.results-area {
+    margin-top: 40px;
+    width: 90%;
+    max-width: 750px;
+    text-align: left;
+    padding-bottom: 50px;
+}
+
+.loader-shimmer {
+    color: var(--accent-yellow);
+    font-size: 14px;
+}
+
+.loader-shimmer p {
+    margin-bottom: 10px;
+}
+
+.result-card {
+    margin-bottom: 25px;
+}
+
+.result-card a {
+    color: var(--accent-blue);
+    font-size: 20px;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.result-card a:hover {
+    text-decoration: underline;
+}
+
+.result-card p {
+    color: var(--text-primary);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.auth-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(52, 168, 83, 0.1);
+    color: var(--accent-green);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Admin Floating button */
+.admin-float-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: var(--bg-panel);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: 0.2s;
+}
+
+.admin-float-btn:hover {
+    background-color: var(--bg-panel-hover);
+    color: var(--accent-yellow);
+}

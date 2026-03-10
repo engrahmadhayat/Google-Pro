@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Pro - Secure Search Ecosystem</title>
+    <!-- FontAwesome for Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Top Navigation Bar -->
+    <header class="topbar">
+        <div class="topbar-left">
+            <span class="status healthy"><i class="fa-solid fa-circle-check"></i> Network Secure</span>
+            <span class="status sandbox"><i class="fa-solid fa-shield-halved"></i> Sandbox Active</span>
+        </div>
+        <div class="topbar-right">
+            <div class="lang-selector">
+                <select id="langSelect" title="Select Global Language">
+                    <option value="en">English (US)</option>
+                    <option value="ur">Urdu (Pakistan)</option>
+                    <option value="ar">Arabic (UAE)</option>
+                    <option value="es">Spanish (Global)</option>
+                </select>
+            </div>
+            <button class="nav-btn"><i class="fa-solid fa-braille"></i></button>
+            <div class="profile-section">
+                <div class="profile-pic">EH</div>
+                <div class="profile-info">
+                    <span class="name">Engr. Ahmed Hayat</span>
+                    <span class="role">Global Admin</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Clean Layout (Google Pro) -->
+    <main class="clean-search-layout">
+        <h1 class="main-title">Google <span class="gp-badge">Pro</span></h1>
+        <p class="signature-line">Powered by <strong>Engineer Ahmed Hayat</strong></p>
+
+        <div class="search-container">
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" id="searchInput" placeholder="Search privately and securely...">
+                <button class="mic-btn" id="voiceSearchBtn" title="Voice Search (AI)"><i
+                        class="fa-solid fa-microphone"></i></button>
+            </div>
+
+            <div class="search-buttons">
+                <button class="btn-primary" id="executeSearch">Google Pro Search</button>
+                <button class="btn-secondary" id="feelingLucky">AI Consensus Engine</button>
+            </div>
+        </div>
+
+        <!-- Dynamic Results Area -->
+        <div class="results-area hidden" id="resultsArea">
+            <div class="loader-shimmer" id="loader">
+                <p><i class="fa-solid fa-network-wired"></i> Connecting to Secure Nodes...</p>
+                <p><i class="fa-solid fa-brain"></i> Running consensus protocols...</p>
+            </div>
+            <!-- Results will be injected here via injected fetch request -->
+        </div>
+    </main>
+
+    <!-- Admin Floating Button -->
+    <button class="admin-float-btn" title="Global Command Center"><i class="fa-solid fa-terminal"></i></button>
+
+    <!-- Necessary Scripts -->
+    <script src="script.js"></script>
+</body>
+
+</html>
