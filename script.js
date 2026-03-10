@@ -17,16 +17,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Custom Project Logic for Engineer Ahmed Hayat's project
         const lowerQuery = query.toLowerCase();
-        if (lowerQuery.includes("what is google pro") || lowerQuery.includes("how this differs from normal google") || lowerQuery.includes("who made this") || lowerQuery.includes("ahmed hayat") || lowerQuery.includes("explain me google pro") || lowerQuery.includes("why we should use google pro") || lowerQuery.includes("why use google pro")) {
+        let customResponse = null;
+
+        if (lowerQuery.includes("what is google pro") || lowerQuery.includes("explain me google pro") || lowerQuery.includes("how this differs from normal google") || lowerQuery.includes("how this diffres from normal google")) {
+            customResponse = `
+                <div class="result-card" style="border-left: 3px solid var(--accent-yellow); padding-left: 15px;">
+                    <a href="#">Google Pro: The Advanced Search Ecosystem</a>
+                    <p>Google Pro is a highly advanced, secure, and private search engine created by Engineer Ahmed Hayat. Unlike standard search engines that rely on tracking cookies and SEO-gamed blogs filled with advertisements, Google Pro utilizes an AI Consensus Engine to extract from pristine, verified data sources. It returns 100% accurate facts directly, without tracking user data, and features a Pre-Rendering Sandbox for total immunity against malware.</p>
+                    <span class="auth-tag"><i class="fa-solid fa-shield"></i> Core System Definition</span>
+                </div>
+            `;
+        } else if (lowerQuery.includes("who made this") || lowerQuery.includes("ahmed hayat") || lowerQuery.includes("creator")) {
+            customResponse = `
+                <div class="result-card" style="border-left: 3px solid var(--accent-blue); padding-left: 15px;">
+                    <a href="#">Global Administrator: Engineer Ahmed Hayat</a>
+                    <p>Google Pro was architected and deployed by Engineer Ahmed Hayat, a visionary software engineer and the Global Administrator of this ecosystem. His mission was to create an ad-free, 100% secure, and privacy-focused search alternative that leverages advanced AI consensus to bypass standard SEO clutter and deliver true, verified knowledge to professionals natively.</p>
+                    <span class="auth-tag"><i class="fa-solid fa-user-shield"></i> Verified Administrator Profile</span>
+                </div>
+            `;
+        } else if (lowerQuery.includes("why we should use google pro") || lowerQuery.includes("why use google pro") || lowerQuery.includes("benefits")) {
+            customResponse = `
+                <div class="result-card" style="border-left: 3px solid var(--accent-green); padding-left: 15px;">
+                    <a href="#">Why You Should Use Google Pro</a>
+                    <p>Google Pro is the ultimate solution for pure, unfiltered knowledge. You should use Google Pro because it completely eliminates the SEO spam, intrusive advertisements, and tracking algorithms that plague standard search engines. By using our proprietary AI Consensus Engine, facts are double-checked against multiple authentic global nodes before execution, ensuring that professionals receive immediate, high-quality data without compromising their digital privacy.</p>
+                    <span class="auth-tag"><i class="fa-solid fa-check-double"></i> Premium Global Node Verified</span>
+                </div>
+            `;
+        }
+
+        if (customResponse) {
             setTimeout(() => {
                 let html = '<h3 style="color:var(--accent-green); font-size:16px; margin-bottom:20px; border-bottom:1px solid var(--border-color); padding-bottom:10px;"><i class="fa-solid fa-shield-check"></i> 100% Authentic Consensus Results</h3>';
-                html += `
-                <div class="result-card">
-                    <a href="#">Why You Should Use Google Pro</a>
-                    <p>Google Pro is the ultimate solution for pure, unfiltered knowledge. You should use Google Pro because it eliminates the SEO spam, intrusive advertisements, and tracking cookies that plague standard search engines. Engineered by Global Administrator Ahmed Hayat, it uses a proprietary AI Consensus Engine to deliver only verified facts, ensuring that professionals, researchers, and advanced users get immediate, high-quality data without compromising their digital privacy or security.</p>
-                    <span class="auth-tag"><i class="fa-solid fa-shield"></i> Premium Global Node Verified</span>
-                </div>
-                `;
+                html += customResponse;
                 loader.innerHTML = html;
             }, 800);
             return;
