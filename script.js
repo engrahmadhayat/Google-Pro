@@ -17,14 +17,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Custom Project Logic for Engineer Ahmed Hayat's project
         const lowerQuery = query.toLowerCase();
-        if (lowerQuery.includes("what is google pro") || lowerQuery.includes("how this differs from normal google") || lowerQuery.includes("who made this") || lowerQuery.includes("ahmed hayat") || lowerQuery.includes("explain me google pro")) {
+        if (lowerQuery.includes("what is google pro") || lowerQuery.includes("how this differs from normal google") || lowerQuery.includes("who made this") || lowerQuery.includes("ahmed hayat") || lowerQuery.includes("explain me google pro") || lowerQuery.includes("why we should use google pro") || lowerQuery.includes("why use google pro")) {
             setTimeout(() => {
                 let html = '<h3 style="color:var(--accent-green); font-size:16px; margin-bottom:20px; border-bottom:1px solid var(--border-color); padding-bottom:10px;"><i class="fa-solid fa-shield-check"></i> 100% Authentic Consensus Results</h3>';
                 html += `
                 <div class="result-card">
-                    <a href="#">Google Pro vs. Standard Google</a>
-                    <p>Standard search engines rely on tracking cookies and SEO-gamed blog posts filled with advertisements. Google Pro bypasses this entirely using an AI Consensus Engine that reads pristine data sources and returns 100% verified facts without tracking your data. It was engineered by Global Administrator Ahmed Hayat to ensure professional, ad-free analysis.</p>
-                    <span class="auth-tag"><i class="fa-solid fa-shield"></i> Source Verified: ZERO SEO SPAM</span>
+                    <a href="#">Why You Should Use Google Pro</a>
+                    <p>Google Pro is the ultimate solution for pure, unfiltered knowledge. You should use Google Pro because it eliminates the SEO spam, intrusive advertisements, and tracking cookies that plague standard search engines. Engineered by Global Administrator Ahmed Hayat, it uses a proprietary AI Consensus Engine to deliver only verified facts, ensuring that professionals, researchers, and advanced users get immediate, high-quality data without compromising their digital privacy or security.</p>
+                    <span class="auth-tag"><i class="fa-solid fa-shield"></i> Premium Global Node Verified</span>
                 </div>
                 `;
                 loader.innerHTML = html;
