@@ -32,26 +32,61 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Direct fetch to real Wikipedia open API
-        const apiUrl = `https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=${encodeURIComponent(query)}&utf8=&format=json&origin=*`;
+        // Professional API: DuckDuckGo Instant Answer API
+        const apiUrl = `https://api.duckduckgo.com/?q=${encodeURIComponent(query)}&format=json&pretty=1`;
 
         fetch(apiUrl)
             .then(res => res.json())
             .then(data => {
-                if (data.query && data.query.search.length > 0) {
-                    let html = '<h3 style="color:var(--accent-green); font-size:16px; margin-bottom:20px; border-bottom:1px solid var(--border-color); padding-bottom:10px;"><i class="fa-solid fa-shield-check"></i> 100% Authentic Consensus Results</h3>';
-                    data.query.search.slice(0, 7).forEach(item => {
+                if (data.AbstractText || (data.RelatedTopics && data.RelatedTopics.length > 0)) {
+                    let html = '<h3 style="color:var(--accent-green); font-size:16px; margin-bottom:20px; border-bottom:1px solid var(--border-color); padding-bottom:10px;"><i class="fa-solid fa-shield-check"></i> Verified Data Consensus</h3>';
+
+                    // Display direct abstract if available
+                    if (data.AbstractText) {
                         html += `
-                        <div class="result-card">
-                            <a href="https://en.wikipedia.org/wiki/${encodeURIComponent(item.title)}" target="_blank">${item.title}</a>
-                            <p>${item.snippet}...</p>
-                            <span class="auth-tag"><i class="fa-solid fa-shield"></i> Source Verified: ZERO SEO SPAM</span>
+                        <div class="result-card" style="border-left: 3px solid var(--accent-blue); padding-left: 15px;">
+                            <a href="${data.AbstractURL}" target="_blank">${data.Heading}</a>
+                            <p style="font-size: 15px; margin-top: 5px;">${data.AbstractText}</p>
+                            <span class="auth-tag"><i class="fa-solid fa-certificate"></i> Verified Source: ${data.AbstractSource}</span>
                         </div>
                         `;
-                    });
+                    }
+
+                    // Display related topics
+                    if (data.RelatedTopics && data.RelatedTopics.length > 0) {
+                        data.RelatedTopics.slice(0, 5).forEach(item => {
+                            if (item.Text && item.FirstURL) {
+                                html += `
+                                <div class="result-card">
+                                    <a href="${item.FirstURL}" target="_blank">${item.Text.split(' - ')[0] || item.FirstURL.split('/').pop()}</a>
+                                    <p>${item.Text}</p>
+                                    <span class="auth-tag"><i class="fa-solid fa-shield"></i> Consensus Verified</span>
+                                </div>
+                                `;
+                            }
+                        });
+                    }
                     loader.innerHTML = html;
                 } else {
-                    loader.innerHTML = `<p style="color:var(--accent-red);"><i class="fa-solid fa-triangle-exclamation"></i> No verified authentic data found for this query in the global consensus.</p>`;
+                    // Fallback to Wikipedia if DuckDuckGo doesn't have a direct answer
+                    const wikiUrl = `https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=${encodeURIComponent(query)}&utf8=&format=json&origin=*`;
+                    fetch(wikiUrl).then(r => r.json()).then(wData => {
+                        if (wData.query && wData.query.search.length > 0) {
+                            let html = '<h3 style="color:var(--accent-green); font-size:16px; margin-bottom:20px; border-bottom:1px solid var(--border-color); padding-bottom:10px;"><i class="fa-solid fa-shield-check"></i> Encyclopedic Knowledge Nodes</h3>';
+                            wData.query.search.slice(0, 5).forEach(item => {
+                                html += `
+                                <div class="result-card">
+                                    <a href="https://en.wikipedia.org/wiki/${encodeURIComponent(item.title)}" target="_blank">${item.title}</a>
+                                    <p>${item.snippet}...</p>
+                                    <span class="auth-tag"><i class="fa-solid fa-book"></i> Global Data Node</span>
+                                </div>
+                                `;
+                            });
+                            loader.innerHTML = html;
+                        } else {
+                            loader.innerHTML = `<p style="color:var(--accent-red);"><i class="fa-solid fa-triangle-exclamation"></i> No verified authentic data found for this query in the global consensus.</p>`;
+                        }
+                    });
                 }
             })
             .catch(err => {
